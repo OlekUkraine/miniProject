@@ -1,6 +1,5 @@
 const wrapper = document.getElementById('wrap');
 
-
 const getUsers = () => {
     return new Promise((resolve, reject) => {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -29,4 +28,28 @@ const getUsers = () => {
         wrapper.appendChild(divUser);
     })
 })();
+
+
+
+
+// animation
+function rotateDiv () {
+
+    if (wrapper.childNodes.length > i) {
+        const user = wrapper.childNodes[i];
+        user.classList.toggle('anim-div');
+
+        i++;
+        setTimeout(rotateDiv,1500);
+    } else {
+        wrapper.childNodes.forEach(elem => elem.classList.remove('anim-div'));
+        i = 0;
+
+        setTimeout(rotateDiv,10000);
+    }
+}
+let i = 0;
+window.onload = () => {
+    const timerId = setTimeout(rotateDiv, 1500);
+}
 

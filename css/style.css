@@ -19,6 +19,8 @@ body {
     row-gap: 10px;
 
     background: linear-gradient(45deg, rgb(231, 242, 59) 45%, rgb(82, 140, 217) 64%);
+
+    transition: margin-left 1s;
 }
 
 .back {
@@ -66,6 +68,13 @@ body {
 
     border: 1px solid grey;
     border-radius: 3px;
+
+}
+
+
+.anim-div {
+    animation-name: rotate;
+    animation-duration: 1s;
 }
 
 .user:hover {
@@ -328,6 +337,26 @@ body {
 
     border: 1px solid rgba(128, 128, 128, 0.36);
     border-radius: 3px;
+}
+
+/* ---------------- animation ------------------ */
+
+@keyframes rotate {
+    0% {
+        transform: rotatex(0deg);
+    }
+    25% {
+        transform: rotatex(90deg);
+    }
+    50% {
+        transform: rotatex(180deg);
+    }
+    75% {
+        transform: rotatex(270deg);
+    }
+    100% {
+        transform: rotatex(360deg);
+    }
 }
 
 
