@@ -9,20 +9,14 @@ aBack.href = `index.html`;
 
 wrapper.appendChild(aBack);
 
-const getUser = () => {
-    return new Promise((resolve, reject) => {                             // Знайшли потрібного юзера
-        fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+const getUser = async () => {
+    return await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
             .then(user => user.json())
-            .then(user => resolve(user))
-    })
 }
 
-const getPosts = () => {
-    return new Promise((resolve, reject) => {                               // Знайшли усі пости юзера
-        fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+const getPosts = async () => {
+    return await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
             .then(posts => posts.json())
-            .then(posts => resolve(posts))
-    })
 }
 
 
@@ -78,10 +72,11 @@ const getPosts = () => {
                 newPosts.forEach(post => {
                     const li = document.createElement('li');
                     const aBtn = document.createElement('a');
+                    const newPostTitle = post.title.charAt(0).toUpperCase() + post.title.slice(1);
 
                     aBtn.classList.add('btn__details-post');
 
-                    li.innerText = `${post.title}`;
+                    li.innerText = `${newPostTitle}`;
                     aBtn.innerText = `Details`;
                     aBtn.href = 'post-details.html' + "?id=" + userId + "&postId=" + post.id;
 

@@ -1,15 +1,11 @@
-const wrapper = document.getElementById('wrap');
-
-const getUsers = () => {
-    return new Promise((resolve, reject) => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(users => users.json())
-            .then(users => resolve(users))
-    })
+const getUsers = async () => {
+    return await fetch('https://jsonplaceholder.typicode.com/users')
+        .then(users => users.json());
 }
 
 (async () => {
     const arrayUsers = await getUsers();
+    const wrapper = document.getElementById('wrap');
 
     arrayUsers.forEach(user => {
         const divUser = document.createElement('div');
@@ -28,6 +24,8 @@ const getUsers = () => {
         wrapper.appendChild(divUser);
     })
 })();
+
+
 
 
 

@@ -10,35 +10,27 @@ aBack.href = `user-details.html` + "?id=" + userId;
 
 wrapper.appendChild(aBack);
 
-const getPost = () => {
-    return new Promise((resolve, reject) => {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+const getPost = async () => {
+    return await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
             .then(post => post.json())
-            .then(post => resolve(post))
-    })
 }
 
-const getComments = () => {
-    return new Promise((resolve, reject) => {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
+const getComments = async () => {
+    return await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
             .then(comments => comments.json())
-            .then(comments => resolve(comments))
-    })
 }
 
 (async () => {
     const post = await getPost();
+    console.log(post)
     const comments = await getComments();
-
+    console.log(comments)
 
     const divDetailsPost = document.createElement('div');
     const divBlockComments = document.createElement('div');
 
-
-
     divDetailsPost.classList.add('details-post');
     divBlockComments.classList.add('block-comments');
-
 
     const createPostListDetails = (post) => {
 
