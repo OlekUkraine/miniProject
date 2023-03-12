@@ -12,26 +12,21 @@ const getUsers = () => {
 (async () => {
     const arrayUsers = await getUsers();
 
-
     arrayUsers.forEach(user => {
         const divUser = document.createElement('div');
         const divText = document.createElement('div');
-        const divButton = document.createElement('div');
         const a = document.createElement('a');
 
         divUser.classList.add('user');
         divText.classList.add('text');
-        divButton.classList.add('btn');
+        a.classList.add('btn__details-user');
 
-        divText.innerText = `${user.id} \n ${user.name}`;
+        divText.innerText = `${user.id} ${user.name}`;
         a.innerText = `Detail`;
-
         a.href = `user-details.html` + "?id=" + user.id;
 
-        divButton.appendChild(a);
-        divUser.append(divText, divButton);
+        divUser.append(divText, a);
         wrapper.appendChild(divUser);
     })
-
 })();
 
