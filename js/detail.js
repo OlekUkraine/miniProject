@@ -1,4 +1,6 @@
 const wrapper = document.getElementById('wrap-detail');
+const head = document.getElementById('head');
+const hToTitle = document.createElement('h2');
 const aBack = document.createElement('a');
 const url = new URLSearchParams(location.search);
 const userId = url.get('id') || 1;
@@ -7,7 +9,10 @@ aBack.classList.add('back');
 aBack.innerText = 'BACK';
 aBack.href = `index.html`;
 
-wrapper.appendChild(aBack);
+hToTitle.innerText = 'User detail';
+head.appendChild(hToTitle);
+
+head.append(aBack, hToTitle);
 
 const getUser = async () => {
     return await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
@@ -41,7 +46,7 @@ const getPosts = async () => {
                 const div = document.createElement('div');
                 const titleElem = document.createElement('h3');
 
-                div.classList.add('item');
+                div.classList.add('inner');
                 titleElem.innerText = key.toUpperCase();
 
                 parentBlock.appendChild(div);

@@ -1,4 +1,6 @@
 const wrapper = document.getElementById('wrap-detail-post');
+const head = document.getElementById('head');
+const hToTitle = document.createElement('h2');
 const aBack = document.createElement('a');
 const url = new URLSearchParams(location.search);
 const postId = url.get('postId') || 1;
@@ -8,16 +10,19 @@ aBack.classList.add('back');
 aBack.innerText = 'BACK';
 aBack.href = `user-details.html` + "?id=" + userId;
 
-wrapper.appendChild(aBack);
+hToTitle.innerText = 'Post';
+head.appendChild(hToTitle);
+
+head.append(aBack, hToTitle);
 
 const getPost = async () => {
     return await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-            .then(post => post.json())
+        .then(post => post.json())
 }
 
 const getComments = async () => {
     return await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-            .then(comments => comments.json())
+        .then(comments => comments.json())
 }
 
 (async () => {
@@ -53,6 +58,8 @@ const getComments = async () => {
     }
 
     const createCommentsForPost = (comments) => {
+        const hToTitle = document.createElement('h2');
+        hToTitle.innerText = 'COMMENTS';
 
         comments.forEach(comment => {
             const divComment = document.createElement('div');
@@ -68,7 +75,7 @@ const getComments = async () => {
             }
             divBlockComments.appendChild(divComment);
         })
-
+        wrapper.appendChild(hToTitle);
     }
 
     createPostListDetails(post);

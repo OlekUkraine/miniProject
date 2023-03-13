@@ -6,6 +6,11 @@ const getUsers = async () => {
 (async () => {
     const arrayUsers = await getUsers();
     const wrapper = document.getElementById('wrap');
+    const head = document.getElementById('head');
+    const hToTitle = document.createElement('h2');
+
+    hToTitle.innerText = 'List of users';
+    head.appendChild(hToTitle);
 
     arrayUsers.forEach(user => {
         const divUser = document.createElement('div');
@@ -20,34 +25,17 @@ const getUsers = async () => {
         a.innerText = `Detail`;
         a.href = `user-details.html` + "?id=" + user.id;
 
+        divUser.addEventListener('mouseenter', () => {
+            divUser.classList.add('anim-rotate');
+        })
+        divUser.addEventListener('mouseout', () => {
+            setTimeout(() => divUser.classList.remove('anim-rotate'), 800);
+        })
+
+
         divUser.append(divText, a);
         wrapper.appendChild(divUser);
     })
 })();
 
-
-
-
-
-
-// animation
-// function rotateDiv () {
-//
-//     if (wrapper.childNodes.length > i) {
-//         const user = wrapper.childNodes[i];
-//         user.classList.toggle('anim-div');
-//
-//         i++;
-//         setTimeout(rotateDiv,1500);
-//     } else {
-//         wrapper.childNodes.forEach(elem => elem.classList.remove('anim-div'));
-//         i = 0;
-//
-//         setTimeout(rotateDiv,10000);
-//     }
-// }
-// let i = 0;
-// window.onload = () => {
-//     const timerId = setTimeout(rotateDiv, 1500);
-// }
 
