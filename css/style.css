@@ -1,6 +1,6 @@
 :root{
     --col-text: aliceblue;
-    --col-bg: rgb(72, 67, 67);
+    --col-bg: rgba(72, 67, 67, 0.55);
     --col-bg-btn: #ffffd9;
 }
 * {
@@ -9,6 +9,13 @@
 body {
     margin: 0;
     padding: 0;
+
+    background: linear-gradient(75deg, rgb(73, 72, 72) 41%, rgb(140, 141, 141) 42%, rgb(73, 72, 72) 43%);
+    /*background: linear-gradient(45deg, rgb(231, 242, 59) 30%, rgb(75, 119, 213) 50%, rgb(231, 242, 59) 70%);*/
+    background-size: 500% 100%;
+
+    animation: gradient 10s ease infinite;
+    animation-delay: 5s;
 }
 
 
@@ -20,9 +27,6 @@ body {
     padding: 10px;
 
     display: flex;
-
-    /*background: linear-gradient(45deg, rgb(231, 242, 59) 45%, rgb(82, 140, 217) 64%);*/
-    background-color: #544e4e;
 }
 
 .header {
@@ -73,8 +77,8 @@ h2 {
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: center;
-    column-gap: 30px;
-    row-gap: 10px;
+    column-gap: 5%;
+    row-gap: 15px;
 }
 
 .user {
@@ -97,6 +101,13 @@ h2 {
     margin-bottom: 1px;
 
     box-shadow: 0 3px 4px grey;
+}
+
+.user-animation {
+    margin-top: -700px;
+    animation: appearance .8s ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: .8s;
 }
 
 .anim-rotate {
@@ -178,7 +189,7 @@ h2 {
 scale: 101%;
 }
 
-.details-user p:hover {
+.paragraph:hover {
     scale: 101%;
 }
 
@@ -202,7 +213,7 @@ scale: 101%;
     list-style: none;
 }
 
-.posts-list li {
+.lishka {
     padding: 5px 15px;
 
     display: flex;
@@ -220,7 +231,7 @@ scale: 101%;
     transition: .2s;
 }
 
-.posts-list li:hover {
+.lishka:hover {
     margin-bottom: 2px;
     margin-top: -2px;
 
@@ -306,6 +317,8 @@ scale: 101%;
 
 .details-post {
     width: 100%;
+    max-width: 700px;
+    margin-bottom: 20px;
 
     display: flex;
     flex-direction: column;
@@ -395,4 +408,21 @@ scale: 101%;
     }
 }
 
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
 
+@keyframes appearance {
+    0% {
+        margin-top: -700px;
+    }
+    100% {
+        margin-top: 0;
+    }
+    
+}
