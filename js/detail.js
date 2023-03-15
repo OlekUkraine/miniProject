@@ -1,5 +1,6 @@
 const wrapper = document.getElementById('wrap-detail');
-const head = document.getElementById('head');
+const userDetailsBox = document.getElementById('details-user');
+const divBtnOpenTitles = document.getElementById('btn-open-list');
 const userId = new URLSearchParams(location.search).get('id') || 1;
 
 const getUser = async () => {
@@ -19,18 +20,9 @@ function createNewElement (...element) {
     return newElement;
 }
 
-const hToTitle = createNewElement ('h2', 'title', 'User detail');
-const aBack = createNewElement ('a', 'back', 'BACK');
-aBack.href = `index.html`;
-head.append(aBack, hToTitle);
-
 (async () => {
     const user = await getUser();
     const posts = await getPosts();
-
-    const userDetailsBox = createNewElement ('div', 'details-user');
-    const divBtnOpenTitles = createNewElement ('div', 'btn__open-titles', `post of current user`);
-    wrapper.append(userDetailsBox, divBtnOpenTitles);
 
     const createUsersListDetails = (obj, parentBlock) => {
         const block = createNewElement ('div', 'inner');

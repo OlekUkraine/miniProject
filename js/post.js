@@ -1,6 +1,9 @@
-const wrapper = document.getElementById('wrap-detail-post');
-const head = document.getElementById('head');
+const aBack = document.getElementById('back-btn');
+const divDetailsPost = document.getElementById('details-post');
+const divBlockComments = document.getElementById('block-comments');
 const url = new URLSearchParams(location.search);
+const postId = url.get('postId') || 1;
+aBack.href = `user-details.html` + "?id=" + url.get('id') || 1;
 
 const getPost = async () => {
     return await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
@@ -18,23 +21,9 @@ function createNewElement (...element) {
     return newElement;
 }
 
-const hToTitle = createNewElement ('h2', 'title', 'Post');
-const aBack = createNewElement ('a', 'back', 'BACK');
-
-const postId = url.get('postId') || 1;
-const userId = url.get('id');
-aBack.href = `user-details.html` + "?id=" + userId;
-head.append(aBack, hToTitle);
-
-
-
 (async () => {
     const post = await getPost();
     const comments = await getComments();
-    const divDetailsPost = createNewElement ('div', 'details-post');
-    const hToTitle = createNewElement ('h2', `title`, 'COMMENTS');
-    const divBlockComments = createNewElement ('div', 'block-comments');
-    wrapper.append(divDetailsPost, hToTitle, divBlockComments);
 
     const createPostListDetails = (post) => {
 

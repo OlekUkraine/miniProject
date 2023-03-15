@@ -1,5 +1,4 @@
 const wrapper = document.getElementById('wrap');
-const head = document.getElementById('head');
 setTimeout(() => wrapper.classList.remove('user-animation'),2000);
 
 const getUsers = async () => {
@@ -15,9 +14,6 @@ const getUsers = async () => {
         if (element[2]) newElement.innerText = element[2];
         return newElement;
     }
-
-    const hToTitle = createNewElement('h2','link__user-list', 'List of users');
-    head.appendChild(hToTitle);
 
     arrayUsers.forEach(user => {
         const divUser = createNewElement('div', 'user');
