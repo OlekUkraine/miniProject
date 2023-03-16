@@ -3,13 +3,13 @@ const userDetailsBox = document.getElementById('details-user');
 const divBtnOpenTitles = document.getElementById('btn-open-list');
 const userId = new URLSearchParams(location.search).get('id') || 1;
 
-const getUser = async () => {
-    return await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+const getUser = () => {
+    return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
         .then(user => user.json())
 }
 
-const getPosts = async () => {
-    return await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+const getPosts = () => {
+    return fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
         .then(posts => posts.json())
 }
 

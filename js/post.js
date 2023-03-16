@@ -5,12 +5,12 @@ const url = new URLSearchParams(location.search);
 const postId = url.get('postId') || 1;
 aBack.href = `user-details.html` + "?id=" + url.get('id') || 1;
 
-const getPost = async () => {
-    return await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+const getPost = () => {
+    return fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         .then(post => post.json())
 }
-const getComments = async () => {
-    return await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
+const getComments = () => {
+    return fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
         .then(comments => comments.json())
 }
 

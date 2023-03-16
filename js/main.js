@@ -1,8 +1,8 @@
 const wrapper = document.getElementById('wrap');
 setTimeout(() => wrapper.classList.remove('user-animation'),2000);
 
-const getUsers = async () => {
-    return await fetch('https://jsonplaceholder.typicode.com/users')
+const getUsers = () => {
+    return fetch('https://jsonplaceholder.typicode.com/users')
         .then(users => users.json());
 }
 
