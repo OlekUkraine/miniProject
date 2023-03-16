@@ -206,7 +206,7 @@ scale: 101%;
 .posts-list {
     width: calc(100% / 2);
     max-width: 430px;
-    min-width: 400px;
+    min-width: 370px;
     padding: 8px;
 
     display: flex;
@@ -309,6 +309,8 @@ scale: 101%;
 
 
 
+
+
 /* -------------------------- Post-details ------------------------------ */
 
 .wrapper-post {
@@ -351,14 +353,13 @@ scale: 101%;
     width: 95%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    gap: 18px;
 }
 
 .comment {
+    width: calc(100% / 4 - 20px);
     margin-top: 10px;
     padding: 4px;
-
-    width: 23%;
 
     color: var(--col-text);
     background-color: var(--col-bg);
@@ -390,12 +391,99 @@ scale: 101%;
     border-radius: 3px;
 }
 
+/* --------------------- media ----------------------- */
+@media (max-width: 768px){
+
+    /* User-details */
+
+    .details-user {
+        min-width: 400px;
+        max-width: 550px;
+
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .details-user > div:nth-child(2) {
+        border: none;
+    }
+
+    .details-user > div:nth-child(3) {
+        border-top: 1px solid grey;
+    }
+
+    .titles-posts {
+        gap: 10px;
+    }
+
+    .posts-list {
+        min-width: 200px;
+    }
+
+    /* Post-details */
+
+    .block-comments {
+        padding: 20px;
+    }
+
+    .comment {
+        width: calc(100% / 2 - 10px);
+    }
+}
+
+@media (max-width: 576px){
+
+    /* User-details */
+
+    .details-user > div:nth-child(1) {
+        border-right: none;
+    }
+
+    .details-user > div:nth-child(2) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        border-top: 1px solid grey;
+    }
+
+    .details-user > div:nth-child(2) > h3 {
+        width: 100%;
+    }
+
+    .details-user > div:nth-child(3) {
+        border-top: 1px solid grey;
+    }
+
+    .titles-posts {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .posts-list {
+        width: 80%;
+        min-width: 200px;
+    }
+
+    /* Post-details */
+
+    .block-comments {
+        justify-content: center;
+    }
+
+    .comment {
+        width: 80%;
+    }
+}
+
 
 
 /* ---------------- footer ----------------------*/
 .foot {
     width: 100%;
     height: 50px;
+    margin-top: 20px;
 
     display: flex;
     justify-content: center;
